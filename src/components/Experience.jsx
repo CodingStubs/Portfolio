@@ -140,7 +140,7 @@ const Experience = ({ onClose }) => {
                         {/* Second Photo */}
                         <div className="w-1/5 flex justify-center items-center border-4 border-gray-500">
                             <img
-                                src="public/assets/AbbottPhoto.png"
+                                src="../assets/AbbottPhoto.png"
                                 alt="Abbott Work Photo"
                                 className="object-contain"
                             />
