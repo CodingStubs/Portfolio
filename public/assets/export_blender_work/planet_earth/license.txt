@@ -1,0 +1,11 @@
+Model Information:
+* title:	Planet Earth World Millionpainter
+* source:	https://sketchfab.com/3d-models/planet-earth-world-millionpainter-78d094d561c64b1d8b24ab58ef7ea27f
+* author:	TheMillionPainter (https://sketchfab.com/TheMillionPainter)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Planet Earth World Millionpainter" (https://sketchfab.com/3d-models/planet-earth-world-millionpainter-78d094d561c64b1d8b24ab58ef7ea27f) by TheMillionPainter (https://sketchfab.com/TheMillionPainter) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

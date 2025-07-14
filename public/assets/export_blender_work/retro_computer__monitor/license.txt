@@ -1,0 +1,11 @@
+Model Information:
+* title:	Retro Computer & Monitor
+* source:	https://sketchfab.com/3d-models/retro-computer-monitor-8926293078874194b551e74c40a3debf
+* author:	JasperTobias (https://sketchfab.com/JasperTobias)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Retro Computer & Monitor" (https://sketchfab.com/3d-models/retro-computer-monitor-8926293078874194b551e74c40a3debf) by JasperTobias (https://sketchfab.com/JasperTobias) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
