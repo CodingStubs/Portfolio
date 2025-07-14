@@ -84,7 +84,7 @@ const Tech = ({ onClose }) => {
                         </div>
                         <div className="w-2/5 flex justify-center items-center">
                             <img
-                                src="public/assets/MLForFinPhoto.png"
+                                src="/assets/MLForFinPhoto.png"
                                 alt=""
                                 className="w-auto min-w-[65px] h-2/3 object-contain"
                             />
@@ -113,7 +113,7 @@ const Tech = ({ onClose }) => {
                         </div>
                         <div className="w-1/3 flex justify-center items-center border border-gray-500">
                             <img
-                                src="public/assets/333ProjPhoto.png"
+                                src="/assets/333ProjPhoto.png"
                                 alt=""
                                 className="w-auto min-w-[65px] h-full object-contain"
                             />
@@ -151,7 +151,7 @@ const Tech = ({ onClose }) => {
 
                     <div className="w-full flex justify-center items-center border border-gray-500">
                         <img
-                            src="public/assets/GemeniProjectPhoto.png"
+                            src="/assets/GemeniProjectPhoto.png"
                             alt=""
                             className="w-full h-auto object-contain"
                         />
