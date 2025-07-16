@@ -1,5 +1,4 @@
 import React from 'react'
-import Experience from './components/Experience.jsx'
 import PlanetScene from './sections/PlanetScene.jsx'
 
 const App = () => {

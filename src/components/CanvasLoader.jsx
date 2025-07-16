@@ -11,9 +11,13 @@ const CanvasLoader = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                whiteSpace: 'nowrap',
             }}
         >
+            <p style={{fontSize: 14, color: '#F1F1F1', fontWeight: 800}}>
+                Pan and Zoom!
+            </p>
             <span className="canvas-loader" />
             <p style={{fontSize: 14, color: '#F1F1F1', fontWeight: 800, marginTop: 40}}>
                 {progress != 0 ? `${progress.toFixed(2)}%` : 'Loading...'}

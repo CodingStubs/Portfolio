@@ -21,7 +21,7 @@ const PlanetScene = () => {
     return (
         <section className="min-h-screen w-full flex flex-col relative">
             <div
-                className="w-full min-h-screen absolute inset-0 mx-auto mt-10"
+                className="w-full min-h-screen absolute inset-0 mx-auto"
                 ref={canvasRef}
             >
                 <Canvas
