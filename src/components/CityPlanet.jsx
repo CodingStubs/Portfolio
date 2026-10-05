@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Html } from '@react-three/drei';
-import Experience from './Experience';
 
-const CityPlanet = ({ isHovered, onHover, onBlur, setShowPopup, position = [0, 0, 0] }) => {
+const CityPlanet = ({ isHovered, onHover, onBlur, onOpen, position = [0, 0, 0] }) => {
     const gltf = useLoader(GLTFLoader, './assets/export_blender_work/city_planet.glb');
     const modelRef = useRef();
-    const [showPopup, setLocalShowPopup] = useState(false);
 
     useFrame(() => {
         if (modelRef.current) {
@@ -33,8 +30,7 @@ const CityPlanet = ({ isHovered, onHover, onBlur, setShowPopup, position = [0, 0
 
     const handleClick = (event) => {
         event.stopPropagation();
-        setLocalShowPopup(true);
-        setShowPopup(true);  // Update the parent component to disable OrbitControls
+        onOpen();
     };
 
     useEffect(() => {
@@ -49,35 +45,24 @@ const CityPlanet = ({ isHovered, onHover, onBlur, setShowPopup, position = [0, 0
     }, [isHovered]);
 
     return (
-        <>
-            <group
-                position={position}
-                onPointerOver={handlePointerOver}
-                onPointerOut={handlePointerOut}
-                onClick={handleClick}
-                onPointerDown={handleClick}
-            >
-                <mesh>
-                    <sphereGeometry args={[2.15, 16, 16]} />
-                    <meshBasicMaterial transparent opacity={0} depthWrite={false} />
-                </mesh>
+        <group
+            position={position}
+            onPointerOver={handlePointerOver}
+            onPointerOut={handlePointerOut}
+            onClick={handleClick}
+            onPointerDown={handleClick}
+        >
+            <mesh>
+                <sphereGeometry args={[2.15, 16, 16]} />
+                <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+            </mesh>
 
-                <primitive
-                    ref={modelRef}
-                    object={gltf.scene}
-                    dispose={null}
-                />
-            </group>
-
-            {showPopup && (
-                <Html center>
-                    <Experience onClose={() => {
-                        setLocalShowPopup(false);
-                        setShowPopup(false);  // Reset the parent component to enable OrbitControls
-                    }} />
-                </Html>
-            )}
-        </>
+            <primitive
+                ref={modelRef}
+                object={gltf.scene}
+                dispose={null}
+            />
+        </group>
     );
 };
 

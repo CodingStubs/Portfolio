@@ -9,6 +9,9 @@ import EarthPlanet from '../components/EarthPlanet.jsx';
 import Galaxy from '../components/Galaxy.jsx';
 import Rocket from '../components/Rocket.jsx';
 import Sun from '../components/Sun.jsx';
+import About from '../components/About.jsx';
+import Experience from '../components/Experience.jsx';
+import Tech from '../components/Tech.jsx';
 
 const PLANET_ORBITS = {
     projects: {
@@ -61,10 +64,15 @@ const OrbitingPlanet = ({ radius, speed, phase, y = 0, active = true, children }
 
 const PlanetScene = () => {
     const [hoveredPlanet, setHoveredPlanet] = useState(null);
-    const [showPopup, setShowPopup] = useState(false);  // Track if the popup is showing
+    const [activePopup, setActivePopup] = useState(null);
     const [isRocketPov, setIsRocketPov] = useState(false);
     const [rocketPhase, setRocketPhase] = useState('flying');
     const canvasRef = useRef();
+    const showPopup = activePopup !== null;
+
+    const handleClosePopup = () => {
+        setActivePopup(null);
+    };
 
     return (
         <section className="min-h-screen w-full flex flex-col relative">
@@ -86,7 +94,7 @@ const PlanetScene = () => {
                                 isHovered={hoveredPlanet === 'computer'}
                                 onHover={() => setHoveredPlanet('computer')}
                                 onBlur={() => setHoveredPlanet(null)}
-                                setShowPopup={setShowPopup}
+                                onOpen={() => setActivePopup('projects')}
                             />
                         </OrbitingPlanet>
 
@@ -95,7 +103,7 @@ const PlanetScene = () => {
                                 isHovered={hoveredPlanet === 'earth'}
                                 onHover={() => setHoveredPlanet('earth')}
                                 onBlur={() => setHoveredPlanet(null)}
-                                setShowPopup={setShowPopup}
+                                onOpen={() => setActivePopup('about')}
                             />
                         </OrbitingPlanet>
 
@@ -104,7 +112,7 @@ const PlanetScene = () => {
                                 isHovered={hoveredPlanet === 'city'}
                                 onHover={() => setHoveredPlanet('city')}
                                 onBlur={() => setHoveredPlanet(null)}
-                                setShowPopup={setShowPopup}
+                                onOpen={() => setActivePopup('experience')}
                             />
                         </OrbitingPlanet>
 
@@ -137,7 +145,15 @@ const PlanetScene = () => {
 
                 {/* Full-screen overlay to block interactions when the popup is open */}
                 {showPopup && (
-                    <div className="absolute inset-0 opacity-25 z-10" />
+                    <div className="absolute inset-0 z-10 bg-black/25" />
+                )}
+
+                {activePopup && (
+                    <div className="absolute inset-0 z-30 flex items-center justify-center">
+                        {activePopup === 'projects' && <Tech onClose={handleClosePopup} />}
+                        {activePopup === 'about' && <About onClose={handleClosePopup} />}
+                        {activePopup === 'experience' && <Experience onClose={handleClosePopup} />}
+                    </div>
                 )}
 
                 {isRocketPov && rocketPhase === 'hidden' && (
