@@ -1,6 +1,4 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FaPython, FaJava } from 'react-icons/fa';
 import LanguageIcons from '../components/LanguageIcons.jsx';
 
 
@@ -62,7 +60,7 @@ const AboutMe = ({ onClose }) => {
                             Eager to apply theoretical knowledge to real-world tech challenges.
                             <br/> <br/>
 
-                            When I'm not behind a desk, I enjoy throwing the football, reading novels, playing poker, or improving
+                            When I&apos;m not behind a desk, I enjoy throwing the football, reading novels, playing poker, or improving
                             my geography knowledge (
                             <a
                                 className="text-base text-blue-400 leading-relaxed"
@@ -83,10 +81,13 @@ const AboutMe = ({ onClose }) => {
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">Education</h3>
                     <div className="mb-4">
                         <img
-                            src="https://sustainability.uw.edu/blog/files/20220808_August%20Campus_0006.jpg"
+                            src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/University_of_Washington%2C_Seattle%2C_WA.JPG/1280px-University_of_Washington%2C_Seattle%2C_WA.JPG"
                             alt="University Campus"
                             className="w-full rounded-lg border-4 border-gray-500 shadow-sm mb-4"
                         />
+                        <p className="text-xs text-gray-400">
+                            Photo by Meganp via Wikimedia Commons, CC BY-SA 3.0.
+                        </p>
                     </div>
                     <p className="text-lg text-gray-500 italic leading-relaxed mb-4">
                         B.S. in Computer Science, University of Washington (Graduating June 2026)

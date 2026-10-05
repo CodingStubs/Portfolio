@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
 import Tech from './Tech.jsx';
 
-const ComputerPlanet = ({ isHovered, onHover, onBlur, setShowPopup }) => {
+const ComputerPlanet = ({ isHovered, onHover, onBlur, setShowPopup, position = [0, 0, 0] }) => {
     const gltf = useLoader(GLTFLoader, './assets/export_blender_work/computer_planet.glb');
     const modelRef = useRef();
     const [localShowPopup, setLocalShowPopup] = useState(false);
@@ -35,24 +35,42 @@ const ComputerPlanet = ({ isHovered, onHover, onBlur, setShowPopup }) => {
     }, [isHovered]);
 
     // Handle popup display
-    const handleClick = () => {
-        if (isHovered) {
-            setLocalShowPopup(true);
-            setShowPopup(true); // Notify parent to disable OrbitControls
-        }
+    const handlePointerOver = (event) => {
+        event.stopPropagation();
+        onHover();
+    };
+
+    const handlePointerOut = (event) => {
+        event.stopPropagation();
+        onBlur();
+    };
+
+    const handleClick = (event) => {
+        event.stopPropagation();
+        setLocalShowPopup(true);
+        setShowPopup(true); // Notify parent to disable OrbitControls
     };
 
     return (
         <>
-            <primitive
-                ref={modelRef}
-                object={gltf.scene}
-                dispose={null}
-                position={[3, 0, 0]} // Adjust position
-                onPointerOver={onHover}
-                onPointerOut={onBlur}
+            <group
+                position={position}
+                onPointerOver={handlePointerOver}
+                onPointerOut={handlePointerOut}
                 onClick={handleClick}
-            />
+                onPointerDown={handleClick}
+            >
+                <mesh>
+                    <sphereGeometry args={[2, 16, 16]} />
+                    <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+                </mesh>
+
+                <primitive
+                    ref={modelRef}
+                    object={gltf.scene}
+                    dispose={null}
+                />
+            </group>
 
             {localShowPopup && (
                 <Html center>

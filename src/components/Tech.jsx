@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 
@@ -140,10 +139,10 @@ const Tech = ({ onClose }) => {
                                 they were running for.
                                 Using links to votewa.gov pages with summaries the candidates had submitted for
                                 themselves, Selenium
-                                would copy their briefs and pass it into Google's Gemeni API, with instructions to
+                                would copy their briefs and pass it into Google&apos;s Gemeni API, with instructions to
                                 summarize the
                                 information. These Gemeni-produced summaries were then presented along with the
-                                candidate's information,
+                                candidate&apos;s information,
                                 enabling voters to quickly become familiar with unknown local election participants.
                             </p>
                         </div>

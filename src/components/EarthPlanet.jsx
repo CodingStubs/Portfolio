@@ -1,10 +1,10 @@
-import React, {useRef, useEffect, useState} from 'react';
+import {useRef, useEffect, useState} from 'react';
 import { useLoader, useFrame } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import {Html} from "@react-three/drei";
 import About from "./About.jsx";
 
-const EarthPlanet = ({ isHovered, onHover, onBlur, setShowPopup }) => {
+const EarthPlanet = ({ isHovered, onHover, onBlur, setShowPopup, position = [0, 0, 0] }) => {
     const gltf = useLoader(GLTFLoader, './assets/export_blender_work/earth_planet.glb');
     const modelRef = useRef();
     const [showPopup, setLocalShowPopup] = useState(false);
@@ -22,11 +22,20 @@ const EarthPlanet = ({ isHovered, onHover, onBlur, setShowPopup }) => {
         }
     });
 
-    const handleClick = () => {
-        if (isHovered) {
-            setLocalShowPopup(true);
-            setShowPopup(true);  // Update the parent component to disable OrbitControls
-        }
+    const handlePointerOver = (event) => {
+        event.stopPropagation();
+        onHover();
+    };
+
+    const handlePointerOut = (event) => {
+        event.stopPropagation();
+        onBlur();
+    };
+
+    const handleClick = (event) => {
+        event.stopPropagation();
+        setLocalShowPopup(true);
+        setShowPopup(true);  // Update the parent component to disable OrbitControls
     };
 
     useEffect(() => {
@@ -42,15 +51,24 @@ const EarthPlanet = ({ isHovered, onHover, onBlur, setShowPopup }) => {
 
     return (
         <>
-            <primitive
-                ref={modelRef}
-                object={gltf.scene}
-                dispose={null}
-                position={[0, 0, 0]} // Adjust position as needed
-                onPointerOver={onHover}
-                onPointerOut={onBlur}
+            <group
+                position={position}
+                onPointerOver={handlePointerOver}
+                onPointerOut={handlePointerOut}
                 onClick={handleClick}
-            />
+                onPointerDown={handleClick}
+            >
+                <mesh>
+                    <sphereGeometry args={[2, 16, 16]} />
+                    <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+                </mesh>
+
+                <primitive
+                    ref={modelRef}
+                    object={gltf.scene}
+                    dispose={null}
+                />
+            </group>
 
             {showPopup && (
                 <Html center>

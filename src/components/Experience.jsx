@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const fadeInRight = {
@@ -42,9 +41,12 @@ const Experience = ({ onClose }) => {
                     <div className="flex mb-4 items-center justify-center">
                         <img src="../assets/anduril.png" alt="Anduril Logo" className="w-1/2 object-contain"/>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-700">Software Engineering Intern</h3>
+                    <h3 className="text-xl font-semibold mb-2 text-gray-700">Mission Software Engineer</h3>
                     <p className="text-sm text-gray-600 mb-4">Anduril Industries - Costa Mesa, CA</p>
-                    <p className="text-base text-gray-600 leading-relaxed">Summer 2025 Internship. Programming in Rust</p>
+                    <p className="text-base text-gray-600 leading-relaxed">
+                        <ul>Sentry Product</ul>
+                        <ul>Previously Summer 2025 Intern</ul>
+                    </p>
                 </motion.div>
 
                 <SectionDivider/>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
@@ -6,6 +6,13 @@ const Galaxy = () => {
     const gltf = useLoader(GLTFLoader, './assets/need_some_space/scene.gltf');
     const modelRef = useRef();
 
+    useEffect(() => {
+        gltf.scene.traverse((child) => {
+            if (child.isMesh) {
+                child.raycast = () => null;
+            }
+        });
+    }, [gltf.scene]);
 
     return (
         <primitive

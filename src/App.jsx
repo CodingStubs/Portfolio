@@ -1,4 +1,3 @@
-import React from 'react'
 import PlanetScene from './sections/PlanetScene.jsx'
 
 const App = () => {
